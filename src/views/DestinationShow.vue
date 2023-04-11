@@ -9,12 +9,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 const destination = ref(undefined);
 const route = useRoute();
+const props = defineProps({
+  id: String,
+});
 
+console.log(props.id === 3);
 const loadDestination = async () => {
   const response = await fetch(
     `https://travel-dummy-api.netlify.app/${route.params.slug}.json`
