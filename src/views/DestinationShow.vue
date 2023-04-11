@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 const destination = ref(undefined);
@@ -23,6 +23,8 @@ const loadDestination = async () => {
 };
 
 onMounted(() => loadDestination());
+
+// watch(() => route.params.slug, loadDestination);
 </script>
 
 <style lang="scss" scoped></style>
