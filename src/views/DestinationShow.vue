@@ -10,18 +10,15 @@
 
 <script setup>
 import sourceData from "@/data.json";
-import { reactive, computed } from "vue";
-import { useRouter } from "vue-router";
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 
-const router = useRouter();
-const state = reactive({
-  destinationId: parseInt(router.currentRoute.value.params.id),
-  destinations: sourceData.destinations,
-});
-
+const route = useRoute();
+const destinationId = ref(parseInt(route.params.id));
+const destinations = ref(sourceData.destinations);
 const destination = computed(() => {
-  return state.destinations.find(
-    (destination) => destination.id === state.destinationId
+  return destinations.value.find(
+    (destination) => destination.id === destinationId.value
   );
 });
 </script>
