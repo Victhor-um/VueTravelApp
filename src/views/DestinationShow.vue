@@ -10,11 +10,12 @@
 
 <script setup>
 import sourceData from "@/data.json";
-import { reactive, computed, getCurrentInstance } from "vue";
+import { reactive, computed } from "vue";
+import { useRouter } from "vue-router";
 
-const context = getCurrentInstance();
+const router = useRouter();
 const state = reactive({
-  destinationId: parseInt(context.proxy.$route.params.id),
+  destinationId: parseInt(router.currentRoute.value.params.id),
   destinations: sourceData.destinations,
 });
 
