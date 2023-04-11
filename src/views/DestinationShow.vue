@@ -1,5 +1,5 @@
 <template>
-  <section class="destination">
+  <section v-if="destination" class="destination">
     <h1>{{ destination.name }}</h1>
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name" />
@@ -9,20 +9,20 @@
 </template>
 
 <script setup>
-import sourceData from "@/data.json";
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
+const destination = ref(undefined);
 const route = useRoute();
-const state = ref({
-  destinationId: parseInt(route.params.id),
-  destinations: sourceData.destinations,
-});
-const destination = computed(() => {
-  return state.value.destinations.find(
-    (destination) => destination.id === state.value.destinationId
+
+const loadDestination = async () => {
+  const response = await fetch(
+    `https://travel-dummy-api.netlify.app/${route.params.slug}.json`
   );
-});
+  destination.value = await response.json();
+};
+
+onMounted(() => loadDestination());
 </script>
 
 <style lang="scss" scoped></style>
