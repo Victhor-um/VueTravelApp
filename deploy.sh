@@ -1,29 +1,27 @@
 #!/usr/bin/env sh
 
-# abort on errors
+# прекращаем работу скрипта при возникновении ошибок
 set -e
 
-# build
+# сборка приложения
 npm run build
 
-# navigate into the build output directory
+# переход в папку с собранным приложением
 cd dist
 
-# place .nojekyll to bypass Jekyll processing
+# создание .nojekyll для обхода обработки Jekyll
 echo > .nojekyll
 
-# if you are deploying to a custom domain
+# если вы развертываете на пользовательском домене
 # echo 'www.example.com' > CNAME
 
+# инициализация локального репозитория Git
 git init
 git checkout -B main
 git add -A
 git commit -m 'deploy'
 
-# if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
-
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
- git push -f Victhor-um@github.com:Victhor-um/VueTravelApp.git main:gh-pages
+# развертывание приложения на GitHub Pages
+git push -f https://github.com/Victhor-um/VueTravelApp.git main:gh-pages
 
 cd -
