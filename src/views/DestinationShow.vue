@@ -24,7 +24,6 @@ const destination = computed(() => {
     (destination) => destination.id === state.destinationId
   );
 });
-console.log(destination.value);
 </script>
 
 <style lang="scss" scoped></style>
