@@ -14,11 +14,13 @@ import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const destinationId = ref(parseInt(route.params.id));
-const destinations = ref(sourceData.destinations);
+const state = ref({
+  destinationId: parseInt(route.params.id),
+  destinations: sourceData.destinations,
+});
 const destination = computed(() => {
-  return destinations.value.find(
-    (destination) => destination.id === destinationId.value
+  return state.value.destinations.find(
+    (destination) => destination.id === state.value.destinationId
   );
 });
 </script>
