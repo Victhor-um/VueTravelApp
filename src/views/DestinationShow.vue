@@ -1,6 +1,7 @@
 <template>
   <section v-if="destination" class="destination">
     <h1>{{ destination.name }}</h1>
+    <go-back />
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name" />
       <p>{{ destination.description }}</p>
@@ -27,6 +28,7 @@
 
 <script setup>
 import ExperienceCard from "@/components/ExperienceCard.vue";
+import GoBack from "@/components/GoBack.vue";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
@@ -51,7 +53,7 @@ const loadDestination = async () => {
     "🚀 ~ file: DestinationShow.vue:38 ~ loadDestination ~  experiences.value:",
     experiences.value
   );
-  console.log(destination.value.experiences);
+  console.log(destination.value);
 };
 
 onMounted(() => loadDestination());
