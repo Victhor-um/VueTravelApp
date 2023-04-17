@@ -8,7 +8,7 @@ import TheNavigation from "@/components/TheNavigation.vue";
   <div class="container">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component"></component>
+        <component :is="Component" :key="$route.path"></component>
       </transition>
     </router-view>
   </div>

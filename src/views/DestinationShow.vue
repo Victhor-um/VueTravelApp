@@ -18,7 +18,6 @@
             name: 'experience.show',
             params: {
               experienceSlug: experience.slug,
-              experience: 'weawfafg',
             },
           }"
         >
