@@ -16,9 +16,11 @@
           :key="experience.slug"
           :to="{
             name: 'experience.show',
-            params: { experienceSlug: experience.slug },
+            params: {
+              experienceSlug: experience.slug,
+              experience: 'weawfafg',
+            },
           }"
-          :experience="experience"
         >
           <experience-card :experience="experience" />
         </router-link>

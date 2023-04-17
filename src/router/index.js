@@ -17,9 +17,20 @@ const routes = [
         path: ":experienceSlug",
         name: "experience.show",
         component: () => import("@/views/ExperienceShow.vue"),
-        props: (route) => ({ ...route.params, id: parseInt(route.params.id) }),
+        props: (route) => {
+          return {
+            ...route.params,
+            id: parseInt(route.params.id),
+            experience: route.params.experience,
+          };
+        },
       },
     ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/views/NotFound.vue"),
   },
 ];
 const router = createRouter({

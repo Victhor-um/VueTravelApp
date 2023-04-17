@@ -1,20 +1,20 @@
 <template>
   <h1>We are into experience</h1>
   <section>
-    <h1>{{ experience.name }}</h1>
-    <img :src="`/images/${experience.image}`" :alt="experience.name" />
-    <p>{{ experience.description }}</p>
+    <h1>{{ props.name }}</h1>
+    <img :src="`/images/${props.image}`" :alt="props.name" />
+    <p>{{ props.description }}</p>
   </section>
 </template>
 
 <script setup>
-const experience = defineProps({
+const props = defineProps({
   experience: {
     type: Object,
     required: true,
   },
 });
-console.log("shoow log: ", experience);
+console.log("shoow log: ", props);
 </script>
 
 <style lang="scss" scoped></style>
